@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/marx-merten/micropython.git /micropython && \
     cd /micropython && \
     git remote add upstream https://github.com/micropython/micropython && \
-    git checkout -b wrk v1.24.0
+    git fetch upstream --tags && \
+    git checkout -b wrk v1.24.1
 
 RUN cd /micropython && \
     git submodule update --init && \
