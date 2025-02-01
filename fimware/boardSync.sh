@@ -1,5 +1,4 @@
 #!/bin/bash
-. ./environment.sh >>/dev/null
 
 
 oldmd5=$(cat .life_md5)
