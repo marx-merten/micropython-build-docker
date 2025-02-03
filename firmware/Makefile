@@ -72,6 +72,9 @@ checkSizes: dist/application.bin dist/partition.table
 		exit 1 ;\
 	fi
 	@echo "----------------------------------------"
+	cat dist/partition.table | column -s, -t
+	@echo "----------------------------------------"
+
 
 
 clean:
