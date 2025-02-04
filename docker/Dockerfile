@@ -36,6 +36,6 @@ RUN export VER=$(grep -o 'IDF_VER=v[0-9]*\.[0-9]*\.[0-9]*' /micropython/tools/ci
 
 # Copy the current directory contents into the container at /app
 COPY ./tools /buildtools
-
+COPY ./template /template_workspace
 # Run app.py when the container launches
 CMD ["bash"]
