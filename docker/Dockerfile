@@ -1,13 +1,15 @@
 # Use the official Ubuntu Jammy as a parent image
 FROM ubuntu:jammy
 
+ARG MPY_VERSION=v1.24.1
+
 # Set the working directory
 WORKDIR /buildtools
 
 # Update the package list and install necessary packages
 RUN apt-get update && apt-get install -y \
     build-essential libffi-dev git pkg-config gcc-arm-none-eabi libnewlib-arm-none-eabi cmake \
-    python3 python3-pip python3-venv libusb-1.0-0-dev \
+    python3 python3-pip python3-venv libusb-1.0-0-dev  bsdmainutils \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -15,7 +17,8 @@ RUN git clone https://github.com/marx-merten/micropython.git /micropython && \
     cd /micropython && \
     git remote add upstream https://github.com/micropython/micropython && \
     git fetch upstream --tags && \
-    git checkout -b wrk v1.24.1
+    git checkout -b wrk $MPY_VERSION
+
 
 RUN cd /micropython && \
     git submodule update --init && \
